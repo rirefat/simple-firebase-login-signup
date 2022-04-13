@@ -22,6 +22,10 @@ function App() {
     // console.log(pass);
   }
 
+  const handleRegistered = event =>{
+    setRegistered(event.target.checked);
+  }
+
   const handleSubmit =event=>{  
 
     if(registered){
@@ -44,7 +48,7 @@ function App() {
         setEmail(' ');
         setPass(' ');
         console.log(user);
-        emainVerification();
+        emailVerification();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -58,11 +62,7 @@ function App() {
     event.preventDefault();
   }
 
-  const handleRegistered = event =>{
-    setRegistered(event.target.checked);
-  }
-
-  const emainVerification=()=>{
+  const emailVerification=()=>{
     sendEmailVerification(auth.currentUser)
       .then(() => {
         console.log("email verified");
